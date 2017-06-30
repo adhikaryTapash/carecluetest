@@ -1,0 +1,11 @@
+<div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                         <span class="md-headline">{{vm.selectedPatient.name.first}} {{vm.selectedPatient.name.last}}</span>
+                        <span class="md-subhead">{{vm.selectedPatient.age}},{{vm.selectedPatient.gender}}</span>
+                        <span class="md-subhead">{{vm.selectedPatient.phone}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+    </div>

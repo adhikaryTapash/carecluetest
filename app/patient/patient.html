@@ -1,0 +1,71 @@
+<div>
+    <div>
+        <div>
+          
+           
+           <angucomplete id="ex1"
+              placeholder="Search patient by name or phone no"
+              pause="100"
+              selectedobject="vm.selectedPatient"
+              localdata="vm.patients"
+              searchfields="displayName"
+              titlefield="customName"
+              descriptionfield="phone"
+              
+              minlength="1"
+              inputclass="form-control form-control-small"/>
+
+
+        </div>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <div ng-repeat="item in vm.alphabet" class="md-fab md-mini md-button md-ink-ripple" type="button" aria-label="Eat cake" ng-click="vm.makeSearch(item.name)">
+                <div class="md-ripple-container">{{item.name}}</div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <div flex-xs flex-gt-xs="50" layout="column" ng-if="vm.selectedPatient.title">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch ng-click="vm.showDialog($event, vm.selectedPatient.originalObject)">
+                <md-card-title>
+                    <md-card-title-text>
+                         <span class="md-headline">{{vm.selectedPatient.originalObject.name.first}} {{vm.selectedPatient.originalObject.name.last}}</span>
+                        <span class="md-subhead">{{vm.selectedPatient.originalObject.age}},{{vm.selectedPatient.originalObject.gender}}</span>
+                        <span class="md-subhead">{{vm.selectedPatient.originalObject.phone}}</span>
+                        
+                    </md-card-title-text>
+                   
+                </md-card-title>
+                
+            </md-card>
+    </div>
+    
+    <div infinite-scroll='vm.nextPage()' infinite-scroll-disabled='vm.busy' infinite-scroll-distance='1' ng-if='!vm.selectedPatient.title'>
+        <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="patient in vm.patients">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch ng-click="vm.showDialog($event, patient)">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{patient.name.first}} {{patient.name.last}}</span>
+                        <span class="md-subhead">{{patient.age}},{{patient.gender}}</span>
+                        <span class="md-subhead">{{patient.phone}}</span>
+                        
+                    </md-card-title-text>
+                   
+                </md-card-title>
+                
+            </md-card>
+        </div>
+       
+        <div style='clear: both;'></div>
+        <div ng-show='vm.busy'>Loading data...</div>
+    </div>
+</div>
+
+<div>
+    
+
+
+
+    
+</div>
